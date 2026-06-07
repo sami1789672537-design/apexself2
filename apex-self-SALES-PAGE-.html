@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Self — The Looksmaxxing System</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-dim: #8a7030;
+    --dark: #080808;
+    --surface: #111111;
+    --surface2: #181818;
+    --border: #222222;
+    --text: #EBEBEB;
+    --muted: #777;
+    --faint: #2a2a2a;
+  }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    border-bottom: 1px solid var(--border);
+    background: var(--dark);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 4px;
+    color: var(--gold);
+  }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    padding: 10px 24px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.15s;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 100px 40px 80px;
+    text-align: center;
+  }
+  .hero-eyebrow {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 88px;
+    letter-spacing: 4px;
+    line-height: 0.92;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .hero-title span { color: var(--gold); }
+  .hero-subtitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 8px;
+    color: var(--muted);
+    margin-bottom: 36px;
+  }
+  .hero-desc {
+    font-size: 19px;
+    font-weight: 300;
+    color: #aaa;
+    max-width: 600px;
+    margin: 0 auto 48px;
+    line-height: 1.8;
+  }
+  .hero-desc strong { color: var(--text); font-weight: 500; }
+
+  .cta-block { margin-bottom: 20px; }
+  .cta-main {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 26px;
+    letter-spacing: 3px;
+    padding: 18px 56px;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.15s;
+  }
+  .cta-main:hover { opacity: 0.88; }
+  .cta-sub {
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 12px;
+  }
+  .cta-sub span { color: var(--text); }
+
+  /* ── PROOF BAR ── */
+  .proof-bar {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 60px;
+    display: flex;
+    justify-content: center;
+    gap: 64px;
+    background: var(--surface);
+  }
+  .proof-item { text-align: center; }
+  .proof-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .proof-l {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── SECTIONS ── */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-full {
+    padding: 80px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .section-full-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 3px;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 40px;
+  }
+  .section-title.center { text-align: center; }
+  .section-label.center { text-align: center; }
+
+  /* ── PROBLEM ── */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-bottom: 40px;
+    background: var(--border);
+  }
+  .problem-item {
+    background: var(--surface);
+    padding: 24px 28px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .problem-icon { font-size: 20px; color: var(--muted); flex-shrink: 0; padding-top: 2px; }
+  .problem-text { font-size: 15px; color: #aaa; line-height: 1.6; }
+  .problem-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 4px; }
+
+  /* ── SOLUTION STATEMENT ── */
+  .solution-statement {
+    border-left: 3px solid var(--gold);
+    padding: 20px 28px;
+    background: #13100a;
+    font-size: 18px;
+    font-weight: 300;
+    color: #ccc;
+    line-height: 1.8;
+    margin: 0;
+  }
+  .solution-statement strong { color: var(--gold); font-weight: 500; }
+
+  /* ── MODULES PREVIEW ── */
+  .module-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-bottom: 40px;
+  }
+  .module-card {
+    background: var(--surface2);
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .module-card::before {
+    content: attr(data-num);
+    position: absolute;
+    top: 12px;
+    right: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    color: var(--faint);
+    line-height: 1;
+    pointer-events: none;
+  }
+  .mod-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .mod-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .mod-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+  .mod-teaser {
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .mod-teaser-item {
+    font-size: 13px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .mod-teaser-item::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 1px;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── WHAT YOU GET ── */
+  .get-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .get-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .get-icon { font-size: 20px; color: var(--gold); flex-shrink: 0; padding-top: 1px; }
+  .get-text { font-size: 14px; color: #aaa; line-height: 1.6; }
+  .get-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 3px; }
+
+  /* ── TESTIMONIALS ── */
+  .testi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    background: var(--border);
+    margin-bottom: 40px;
+  }
+  .testi {
+    background: var(--surface2);
+    padding: 28px;
+  }
+  .testi-quote {
+    font-size: 14px;
+    color: #bbb;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .testi-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--faint);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 14px;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .testi-name { font-size: 13px; font-weight: 500; color: var(--text); }
+  .testi-detail { font-size: 11px; color: var(--muted); }
+  .testi-stars { color: var(--gold); font-size: 11px; letter-spacing: 2px; margin-bottom: 14px; }
+
+  /* ── PRICING ── */
+  .pricing-box {
+    border: 1px solid var(--gold-dim);
+    background: var(--surface);
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+    overflow: hidden;
+  }
+  .pricing-top {
+    background: var(--surface2);
+    padding: 32px 40px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pricing-label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+  .pricing-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    color: var(--text);
+    line-height: 1;
+    letter-spacing: 2px;
+  }
+  .pricing-per {
+    font-size: 14px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  .pricing-body {
+    padding: 32px 40px;
+  }
+  .pricing-includes {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+  .pricing-includes li {
+    font-size: 14px;
+    color: #bbb;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .pricing-includes li:last-child { border-bottom: none; }
+  .pricing-includes li i { color: var(--gold); font-size: 16px; flex-shrink: 0; }
+  .pricing-cta {
+    display: block;
+    width: 100%;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+    padding: 18px;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.15s;
+    margin-bottom: 16px;
+  }
+  .pricing-cta:hover { opacity: 0.88; }
+  .pricing-guarantee {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── FAQ ── */
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+  }
+  .faq-q {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+  .faq-a {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── FOOTER CTA ── */
+  .footer-cta {
+    text-align: center;
+    padding: 100px 40px;
+    background: var(--dark);
+  }
+  .footer-cta .hero-title { margin-bottom: 24px; }
+  .footer-cta p {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--muted);
+    margin-bottom: 40px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 60px 20px 60px; }
+    .hero-title { font-size: 56px; }
+    .proof-bar { padding: 20px; gap: 32px; flex-wrap: wrap; }
+    .section { padding: 60px 20px; }
+    .section-full-inner { padding: 0 20px; }
+    .problem-grid, .module-preview, .get-grid, .testi-grid { grid-template-columns: 1fr; }
+    .pricing-box { margin: 0; }
+    .footer-cta { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">APEX SELF</div>
+  <button class="nav-cta" onclick="window.location.href='https://buy.stripe.com/6oU3cu0Tzeeo2Cu3VS4F200'">Get the course — £100</button>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">The complete looksmaxxing programme</div>
+  <div class="hero-title">APEX<br><span>SELF</span></div>
+  <div class="hero-subtitle">The Looksmaxxing System</div>
+  <div class="hero-desc">
+    A structured, 12-week system that closes the gap between where you are now and <strong>what you're actually capable of looking like.</strong> No gimmicks. No genetics excuses. Just the systems that work.
+  </div>
+  <div class="cta-block">
+    <button class="cta-main" onclick="window.location.href='https://buy.stripe.com/6oU3cu0Tzeeo2Cu3VS4F200'">GET INSTANT ACCESS — £100</button>
+    <div class="cta-sub">One-time payment. Lifetime access. <span>No subscription.</span></div>
+  </div>
+</div>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div class="proof-item">
+    <div class="proof-n">6</div>
+    <div class="proof-l">Modules</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-n">30+</div>
+    <div class="proof-l">Lessons</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-n">12</div>
+    <div class="proof-l">Week plan</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-n">3</div>
+    <div class="proof-l">Bonuses</div>
+  </div>
+  <div class="proof-item">
+    <div class="proof-n">£100</div>
+    <div class="proof-l">One time</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<div class="section">
+  <div class="section-label">The problem</div>
+  <div class="section-title">SOUND FAMILIAR?</div>
+
+  <div class="problem-grid">
+    <div class="problem-item">
+      <i class="ti ti-mood-confuzed problem-icon" aria-hidden="true"></i>
+      <div class="problem-text">
+        <strong>You don't know where to start</strong>
+        There's endless conflicting advice online — and no structure to follow.
+      </div>
+    </div>
+    <div class="problem-item">
+      <i class="ti ti-wallet problem-icon" aria-hidden="true"></i>
+      <div class="problem-text">
+        <strong>You've wasted money on products that don't work</strong>
+        Because no one told you the four things that actually matter.
+      </div>
+    </div>
+    <div class="problem-item">
+      <i class="ti ti-clock problem-icon" aria-hidden="true"></i>
+      <div class="problem-text">
+        <strong>You've tried things inconsistently</strong>
+        Started a routine, stopped after two weeks. Sound familiar? You need a system, not tips.
+      </div>
+    </div>
+    <div class="problem-item">
+      <i class="ti ti-dna problem-icon" aria-hidden="true"></i>
+      <div class="problem-text">
+        <strong>You think genetics are the ceiling</strong>
+        They're not. Most people are at 50–60% of their potential. Habits close that gap.
+      </div>
+    </div>
+  </div>
+
+  <blockquote class="solution-statement">
+    Apex Self is a <strong>complete six-module system</strong> built to take you from scattered effort to structured results — covering skincare, training, grooming, sleep, style, and confidence in one place, in the right order, with a week-by-week plan.
+  </blockquote>
+</div>
+
+<!-- MODULES -->
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-label">What's inside</div>
+    <div class="section-title">6 MODULES. EVERYTHING YOU NEED.</div>
+
+    <div class="module-preview">
+      <div class="module-card" data-num="01">
+        <div class="mod-tag">Module 01</div>
+        <div class="mod-title">Foundations & Facial Analysis</div>
+        <div class="mod-desc">Understand your starting point. Assess yourself objectively and build a personalised roadmap with maximum ROI.</div>
+        <div class="mod-teaser">
+          <div class="mod-teaser-item">Facial harmony & the golden ratio</div>
+          <div class="mod-teaser-item">The 5-pillar self-assessment</div>
+          <div class="mod-teaser-item">ROI priority framework</div>
+        </div>
+      </div>
+      <div class="module-card" data-num="02">
+        <div class="mod-tag">Module 02</div>
+        <div class="mod-title">Skincare Mastery</div>
+        <div class="mod-desc">The highest-ROI change most men can make. The exact routine, products, and actives — without the noise.</div>
+        <div class="mod-teaser">
+          <div class="mod-teaser-item">AM/PM routines by skin type</div>
+          <div class="mod-teaser-item">Actives: retinol, niacinamide, vitamin C</div>
+          <div class="mod-teaser-item">Acne & scarring fixes</div>
+        </div>
+      </div>
+      <div class="module-card" data-num="03">
+        <div class="mod-tag">Module 03</div>
+        <div class="mod-title">Body & Physique</div>
+        <div class="mod-desc">Train for aesthetics, not just performance. The muscle groups that matter, and how to hit your visual potential.</div>
+        <div class="mod-teaser">
+          <div class="mod-teaser-item">Aesthetics-first training framework</div>
+          <div class="mod-teaser-item">Nutrition for body composition</div>
+          <div class="mod-teaser-item">Posture correction & mewing</div>
+        </div>
+      </div>
+      <div class="module-card" data-num="04">
+        <div class="mod-tag">Module 04</div>
+        <div class="mod-title">Hair, Grooming & Style</div>
+        <div class="mod-desc">Immediate impact. The right haircut, beard protocol, fragrance guide, and a wardrobe that fits your body.</div>
+        <div class="mod-teaser">
+          <div class="mod-teaser-item">Haircut by face shape guide</div>
+          <div class="mod-teaser-item">Fragrance 101</div>
+          <div class="mod-teaser-item">The three rules of clothing fit</div>
+        </div>
+      </div>
+      <div class="module-card" data-num="05">
+        <div class="mod-tag">Module 05</div>
+        <div class="mod-title">Lifestyle & Health Optimisation</div>
+        <div class="mod-desc">Your biology is a looksmaxxing tool. Sleep, supplements, stress, and sun — all explained.</div>
+        <div class="mod-teaser">
+          <div class="mod-teaser-item">Sleep optimisation protocol</div>
+          <div class="mod-teaser-item">Supplements that actually work</div>
+          <div class="mod-teaser-item">Cortisol, stress & your face</div>
+        </div>
+      </div>
+      <div class="module-card" data-num="06">
+        <div class="mod-tag">Module 06</div>
+        <div class="mod-title">Presence, Confidence & Social Skills</div>
+        <div class="mod-desc">How you carry yourself changes how the world sees you. Body language, vocal tone, photography, and personal brand.</div>
+        <div class="mod-teaser">
+          <div class="mod-teaser-item">High-status body language</div>
+          <div class="mod-teaser-item">How to look great in photos</div>
+          <div class="mod-teaser-item">Building your personal brand</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT YOU GET -->
+<div class="section">
+  <div class="section-label">Everything included</div>
+  <div class="section-title">WHAT YOU'RE GETTING</div>
+
+  <div class="get-grid">
+    <div class="get-item">
+      <i class="ti ti-book get-icon" aria-hidden="true"></i>
+      <div class="get-text">
+        <strong>6 Complete Modules</strong>
+        30+ lessons covering every element of looksmaxxing, written in plain language with actionable steps.
+      </div>
+    </div>
+    <div class="get-item">
+      <i class="ti ti-checklist get-icon" aria-hidden="true"></i>
+      <div class="get-text">
+        <strong>12-Week Action Checklist</strong>
+        A week-by-week printable plan so you always know exactly what to do next.
+      </div>
+    </div>
+    <div class="get-item">
+      <i class="ti ti-flask get-icon" aria-hidden="true"></i>
+      <div class="get-text">
+        <strong>Skincare Product Guide</strong>
+        30+ products compared across budget tiers, by skin type. No more guessing what to buy.
+      </div>
+    </div>
+    <div class="get-item">
+      <i class="ti ti-barbell get-icon" aria-hidden="true"></i>
+      <div class="get-text">
+        <strong>Aesthetics Training Programme</strong>
+        12 weeks of progressive programming focused on the muscle groups that matter most visually.
+      </div>
+    </div>
+    <div class="get-item">
+      <i class="ti ti-users get-icon" aria-hidden="true"></i>
+      <div class="get-text">
+        <strong>Private Community Access</strong>
+        Accountability, progress check-ins, and direct access to others on the same journey.
+      </div>
+    </div>
+    <div class="get-item">
+      <i class="ti ti-infinity get-icon" aria-hidden="true"></i>
+      <div class="get-text">
+        <strong>Lifetime Access</strong>
+        Pay once. Access everything, including all future updates, forever.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-label center">Results</div>
+    <div class="section-title center">WHAT PEOPLE SAY</div>
+
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Did the skincare module first. By week 6 my skin looked completely different. People who've known me for years started commenting. Worth it for that alone."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">JM</div>
+          <div>
+            <div class="testi-name">Jamie M.</div>
+            <div class="testi-detail">Week 10 student</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"I used to think I just had bad genetics. Turns out I was sleeping 5 hours a night, had no skincare routine, and wore clothes that didn't fit. This course fixed all three."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">TR</div>
+          <div>
+            <div class="testi-name">Tom R.</div>
+            <div class="testi-detail">Week 12 graduate</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"The structure is what makes it different. I'd tried bits of this before but never stuck to it. Having the 12-week plan meant I actually followed through this time."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">DK</div>
+          <div>
+            <div class="testi-name">Dan K.</div>
+            <div class="testi-detail">Week 8 student</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRICING -->
+<div class="section" id="pricing">
+  <div class="section-label center">Pricing</div>
+  <div class="section-title center">ONE PRICE. EVERYTHING INCLUDED.</div>
+
+  <div class="pricing-box">
+    <div class="pricing-top">
+      <div class="pricing-label">Full Access — One Time</div>
+      <div class="pricing-price">£100</div>
+      <div class="pricing-per">One-time payment. No subscription. No upsells.</div>
+    </div>
+    <div class="pricing-body">
+      <ul class="pricing-includes">
+        <li><i class="ti ti-check" aria-hidden="true"></i>All 6 modules (30+ lessons)</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>12-week action checklist PDF</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Skincare product guide</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Aesthetics training programme (12 weeks)</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Private community access</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Lifetime access + all future updates</li>
+      </ul>
+      <button class="pricing-cta" onclick="window.location.href='https://buy.stripe.com/6oU3cu0Tzeeo2Cu3VS4F200'">GET INSTANT ACCESS — £100</button>
+      <div class="pricing-guarantee">
+        30-day money-back guarantee. If you follow the first two modules and don't see a difference in your skin and energy, get a full refund. No questions.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-label">Questions</div>
+    <div class="section-title">FREQUENTLY ASKED</div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is this just basic advice I can find for free?</div>
+      <div class="faq-a">The information exists online — but scattered, contradictory, and without structure. The value of this course is the system: what to do, in what order, week by week, with everything in one place. Most people have access to information. What they lack is a plan they can actually follow.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need to spend a lot of money on products?</div>
+      <div class="faq-a">No. The skincare module is built around budget-friendly options — the core routine costs around £45 total. The course teaches you what to buy and why, so you stop wasting money on products that don't work.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">I'm not very fit or don't have great skin — is this still for me?</div>
+      <div class="faq-a">Yes, and especially. The course is designed for people who want to close the gap between where they are now and what they're capable of. The further you are from your potential, the more dramatic the results.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How long does it take to see results?</div>
+      <div class="faq-a">Some changes (haircut, grooming) are immediate. Skincare results are typically visible within 4–8 weeks of consistent routine. Body composition and lifestyle changes show clearly over 8–16 weeks. The 12-week plan is designed to show meaningful progress across all areas.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the refund policy?</div>
+      <div class="faq-a">30-day money-back guarantee. Follow the first two modules — if you genuinely don't see any difference in your skin quality and morning energy within 30 days of consistent use, email for a full refund.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">When do I get access?</div>
+      <div class="faq-a">Immediately after payment. You'll receive an email with your access link within minutes. Start the same day.</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <div class="hero-eyebrow" style="text-align:center; margin-bottom: 24px;">Last chance</div>
+  <div class="hero-title">READY TO<br><span>START?</span></div>
+  <p>One year from now, you'll wish you'd started today. The system works. The only variable is you.</p>
+  <button class="cta-main" onclick="window.location.href='https://buy.stripe.com/6oU3cu0Tzeeo2Cu3VS4F200'">GET INSTANT ACCESS — £100</button>
+  <div class="cta-sub" style="margin-top:14px;">30-day money-back guarantee. Lifetime access. No subscriptions.</div>
+</div>
+
+</body>
+</html>

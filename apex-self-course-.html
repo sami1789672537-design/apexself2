@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX SELF — The Looksmaxxing System</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@600;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --dark: #0A0A0A;
+    --surface: #111111;
+    --surface2: #1A1A1A;
+    --border: #2A2A2A;
+    --text: #E8E8E8;
+    --muted: #888;
+    --accent: #C9A84C;
+  }
+
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* COVER */
+  .cover {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 60px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    background: var(--dark);
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, #0A0A0A 60%, #1a1500 100%);
+    z-index: 0;
+  }
+
+  .cover-content { position: relative; z-index: 1; }
+
+  .cover-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+    border-left: 3px solid var(--gold);
+    padding-left: 12px;
+  }
+
+  .cover-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 96px;
+    letter-spacing: 6px;
+    line-height: 0.9;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .cover-title span { color: var(--gold); }
+
+  .cover-subtitle {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 8px;
+    color: var(--muted);
+    margin-bottom: 48px;
+  }
+
+  .cover-desc {
+    font-size: 18px;
+    font-weight: 300;
+    color: #BBB;
+    max-width: 520px;
+    margin-bottom: 48px;
+    line-height: 1.8;
+  }
+
+  .cover-stats {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 60px;
+  }
+
+  .cover-stat { text-align: left; }
+  .cover-stat-n {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .cover-stat-l {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  .cover-price {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 3px;
+    padding: 12px 32px;
+  }
+
+  .cover-version {
+    position: absolute;
+    bottom: 40px;
+    right: 60px;
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 80px 60px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 3px;
+    color: var(--text);
+    margin-bottom: 40px;
+    line-height: 1;
+  }
+
+  /* MODULE CARDS */
+  .module {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 32px;
+    page-break-inside: avoid;
+  }
+
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  .module-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    color: var(--gold);
+    line-height: 1;
+    min-width: 60px;
+  }
+
+  .module-meta {}
+  .module-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .module-tagline {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  .module-body { padding: 32px; }
+
+  .module-intro {
+    font-size: 15px;
+    color: #BBB;
+    font-weight: 300;
+    margin-bottom: 28px;
+    line-height: 1.8;
+    border-left: 2px solid var(--gold);
+    padding-left: 16px;
+  }
+
+  .lessons { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+
+  .lesson {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .lesson:nth-child(odd) { border-right: 1px solid var(--border); }
+
+  .lesson-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .lesson-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  .lesson-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  /* CONTENT BLOCKS */
+  .content-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px 32px;
+    margin-bottom: 20px;
+  }
+
+  .content-block h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .content-block p {
+    font-size: 14px;
+    color: #BBB;
+    line-height: 1.8;
+    margin-bottom: 10px;
+  }
+
+  .content-block ul, .content-block ol {
+    padding-left: 20px;
+    margin-top: 8px;
+  }
+
+  .content-block li {
+    font-size: 14px;
+    color: #BBB;
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+
+  .callout {
+    border-left: 3px solid var(--gold);
+    background: #1a1500;
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: #C9A84C;
+    font-style: italic;
+  }
+
+  .tip {
+    background: #0d1a0d;
+    border: 1px solid #1a3a1a;
+    border-left: 3px solid #3aA03a;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: #80C080;
+  }
+
+  .tip strong { color: #3aA03a; }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 16px 0;
+  }
+  th {
+    background: var(--surface2);
+    color: var(--gold);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #1a1a1a;
+    color: #BBB;
+    font-size: 13px;
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+
+  /* TIKTOK SCRIPTS */
+  .script-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 32px;
+    overflow: hidden;
+  }
+
+  .script-header {
+    background: var(--surface2);
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .script-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--gold);
+  }
+
+  .script-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    color: var(--text);
+    margin-top: 4px;
+  }
+
+  .script-meta {
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .script-body { padding: 28px; }
+
+  .script-hook {
+    background: #1a1500;
+    border-left: 3px solid var(--gold);
+    padding: 14px 18px;
+    margin-bottom: 20px;
+  }
+  .script-hook-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .script-hook-text {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .script-line {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid #1a1a1a;
+    align-items: start;
+  }
+  .script-line:last-child { border-bottom: none; }
+
+  .script-timestamp {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    padding-top: 2px;
+  }
+
+  .script-action {
+    font-size: 13px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+
+  .script-text {
+    font-size: 14px;
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  .script-cta {
+    background: var(--gold);
+    color: var(--dark);
+    padding: 14px 20px;
+    margin-top: 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  .hashtags {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #5599FF;
+    line-height: 2;
+  }
+
+  /* BONUS */
+  .bonus-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .bonus-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+
+  .bonus-icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .bonus-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .bonus-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* CHECKLIST */
+  .checklist-week {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+    overflow: hidden;
+  }
+  .checklist-week-header {
+    background: var(--surface2);
+    padding: 12px 20px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: var(--gold);
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist-items { padding: 12px 20px; }
+  .checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+    font-size: 13px;
+    color: #BBB;
+    border-bottom: 1px solid #1a1a1a;
+  }
+  .checklist-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  /* DIVIDER */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 32px 0;
+  }
+
+  .gold-line {
+    height: 2px;
+    background: var(--gold);
+    width: 60px;
+    margin-bottom: 32px;
+  }
+
+  /* PAGE BREAKS */
+  @media print {
+    .module, .script-card { page-break-inside: avoid; }
+    .section { page-break-before: always; }
+    .cover { page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+<!-- =================== COVER =================== -->
+<div class="cover">
+  <div class="cover-content">
+    <div class="cover-label">The Complete Programme</div>
+    <div class="cover-title">APEX<br><span>SELF</span></div>
+    <div class="cover-subtitle">The Looksmaxxing System</div>
+    <div class="cover-desc">
+      A structured, evidence-informed programme to help you optimise your appearance, health, and presence — from the ground up. No fluff, no gimmicks. Just the systems that actually work.
+    </div>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <div class="cover-stat-n">6</div>
+        <div class="cover-stat-l">Modules</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">30+</div>
+        <div class="cover-stat-l">Lessons</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">12</div>
+        <div class="cover-stat-l">Week Plan</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-n">3</div>
+        <div class="cover-stat-l">Bonuses</div>
+      </div>
+    </div>
+    <div class="cover-price">£100 — Full Access</div>
+  </div>
+  <div class="cover-version">Version 1.0 — 2025</div>
+</div>
+
+<!-- =================== INTRODUCTION =================== -->
+<div class="section">
+  <div class="section-label">Introduction</div>
+  <div class="section-title">WHAT THIS COURSE IS</div>
+
+  <div class="content-block">
+    <p>
+      Looksmaxxing is the practice of maximising your physical appearance through intentional, consistent effort. At its core, it's about understanding what affects how you look — and systematically improving those things within your control.
+    </p>
+    <p>
+      This isn't about becoming someone you're not. It's about removing friction, building healthy habits, and presenting the best version of yourself with confidence. Think of it as applied self-improvement, rooted in biology and aesthetics.
+    </p>
+    <div class="callout">
+      "You can't choose your genetics, but you can choose how close to your genetic ceiling you get."
+    </div>
+    <p>
+      This course covers six core domains: facial analysis and self-assessment, skincare, body and physique, hair and style, lifestyle optimisation, and social presence. Together they form a complete system.
+    </p>
+  </div>
+
+  <div class="content-block">
+    <h3>HOW TO USE THIS COURSE</h3>
+    <p>Work through each module in order. The foundation modules (1–4) should be started simultaneously in your first two weeks. Advanced modules (5–6) layer in from week 3 onwards. Use the 12-Week Action Checklist (included as a bonus) to stay on track.</p>
+    <ul>
+      <li><strong>Weeks 1–2:</strong> Complete Modules 1 and 2. Begin Module 3 training framework.</li>
+      <li><strong>Weeks 3–6:</strong> Establish skincare routine, training, and grooming habits from Modules 3 and 4.</li>
+      <li><strong>Weeks 7–10:</strong> Introduce lifestyle optimisation from Module 5.</li>
+      <li><strong>Weeks 11–12:</strong> Focus on presence and personal brand from Module 6.</li>
+    </ul>
+    <div class="tip">
+      <strong>Pro tip:</strong> Take a full set of photos before you start — front, side, and back. Progress is hard to see day-to-day but dramatic over 12 weeks when you compare.
+    </div>
+  </div>
+</div>
+
+<!-- =================== MODULE 1 =================== -->
+<div class="section">
+  <div class="section-label">Module 01</div>
+  <div class="section-title">FOUNDATIONS & FACIAL ANALYSIS</div>
+
+  <div class="module">
+    <div class="module-header">
+      <div class="module-num">01</div>
+      <div class="module-meta">
+        <div class="module-title">Foundations & Facial Analysis</div>
+        <div class="module-tagline">Understand your starting point before you build</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="module-intro">
+        Before you can improve, you need to assess. Most people skip this step and waste time fixing things that aren't their weak points. This module gives you the framework to see yourself objectively and build a personalised improvement roadmap.
+      </div>
+
+      <div class="gold-line"></div>
+
+      <div class="content-block">
+        <h3>LESSON 1.1 — WHAT LOOKSMAXXING IS (AND ISN'T)</h3>
+        <p>Looksmaxxing is evidence-based, intentional self-improvement focused on appearance. It is not:</p>
+        <ul>
+          <li>An obsession with perfection or chasing unachievable standards</li>
+          <li>Dangerous or harmful practices — we focus only on safe, sustainable methods</li>
+          <li>A substitute for self-acceptance — confidence and looks complement each other</li>
+        </ul>
+        <p>The realistic goal: close the gap between your current presentation and your natural genetic ceiling. For most people, this gap is significant, and closing even half of it is transformative.</p>
+        <div class="callout">
+          "Soft-maxxing" (skincare, fitness, grooming, sleep, style) can realistically add 1–3 points on any subjective attractiveness scale, which translates to dramatically different life outcomes.
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 1.2 — FACIAL HARMONY & THE GOLDEN RATIO</h3>
+        <p>Facial attractiveness research consistently identifies a few structural principles:</p>
+        <table>
+          <tr><th>Principle</th><th>What It Means</th><th>What You Can Do</th></tr>
+          <tr><td>Symmetry</td><td>Both sides of the face match well</td><td>Chewing evenly, jaw exercises, posture</td></tr>
+          <tr><td>Facial thirds</td><td>Forehead, mid-face, lower face roughly equal</td><td>Hairstyle, beard shape to balance</td></tr>
+          <tr><td>Eye spacing</td><td>One eye-width between the eyes</td><td>Eyebrow grooming, hair direction</td></tr>
+          <tr><td>Jawline definition</td><td>Clear jaw angle and chin projection</td><td>Body fat %, mewing posture, hydration</td></tr>
+          <tr><td>Skin quality</td><td>Clear, even-toned, healthy-looking skin</td><td>Skincare routine (Module 2)</td></tr>
+        </table>
+        <div class="tip">
+          <strong>Exercise:</strong> Take a photo in even, natural daylight with a neutral expression. Use the "thirds" method — draw horizontal lines at your hairline, browline, bottom of nose, and chin. Assess which section is visually short or long. This tells you where to focus.
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 1.3 — OBJECTIVE SELF-ASSESSMENT</h3>
+        <p>Humans are notoriously bad at assessing their own looks — we either over-inflate or over-criticise. Here's a protocol for honest assessment:</p>
+        <ol>
+          <li><strong>The 3-photo method:</strong> Take front, 45-degree, and direct profile shots in natural light. This is what others actually see.</li>
+          <li><strong>The 5 pillars:</strong> Rate yourself honestly on skin, hair, physique, grooming, and style — each out of 10. Your lowest score is your biggest opportunity.</li>
+          <li><strong>The feedback question:</strong> Ask 2–3 trusted friends what one thing they'd change about your appearance. Patterns reveal genuine blind spots.</li>
+          <li><strong>Reference collection:</strong> Identify 3–5 people whose style and aesthetic you want to emulate. Note what specifically you're drawn to — it's rarely genetics; it's usually presentation.</li>
+        </ol>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 1.4 — BUILDING YOUR IMPROVEMENT ROADMAP</h3>
+        <p>Prioritise your efforts using the ROI framework:</p>
+        <table>
+          <tr><th>Area</th><th>Time to See Results</th><th>Effort Level</th><th>Impact</th></tr>
+          <tr><td>Skincare routine</td><td>4–12 weeks</td><td>Low</td><td>Very High</td></tr>
+          <tr><td>Body composition</td><td>8–16 weeks</td><td>High</td><td>Very High</td></tr>
+          <tr><td>Haircut & grooming</td><td>Immediate</td><td>Very Low</td><td>High</td></tr>
+          <tr><td>Sleep quality</td><td>1–2 weeks</td><td>Low</td><td>High</td></tr>
+          <tr><td>Wardrobe</td><td>Immediate</td><td>Medium</td><td>High</td></tr>
+          <tr><td>Posture</td><td>4–8 weeks</td><td>Low</td><td>Medium-High</td></tr>
+        </table>
+        <p>Start with the quick wins (haircut, grooming, sleep) to build momentum. Layer in the longer-term habits (skincare, training) as systems, not one-off efforts.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== MODULE 2 =================== -->
+<div class="section">
+  <div class="section-label">Module 02</div>
+  <div class="section-title">SKINCARE MASTERY</div>
+
+  <div class="module">
+    <div class="module-header">
+      <div class="module-num">02</div>
+      <div class="module-meta">
+        <div class="module-title">Skincare Mastery</div>
+        <div class="module-tagline">Clear, healthy skin is the single highest-ROI change you can make</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="module-intro">
+        Good skin doesn't require expensive products or complicated routines. It requires consistency with the right basics. This module gives you a complete skincare system — from a simple starter routine to advanced actives for real results.
+      </div>
+
+      <div class="gold-line"></div>
+
+      <div class="content-block">
+        <h3>LESSON 2.1 — KNOW YOUR SKIN TYPE</h3>
+        <p>There are five skin types. Knowing yours determines which products you use.</p>
+        <table>
+          <tr><th>Skin Type</th><th>Signs</th><th>Key Focus</th></tr>
+          <tr><td>Normal</td><td>Balanced, few issues</td><td>Maintain with basics</td></tr>
+          <tr><td>Oily</td><td>Shiny by midday, large pores, breakout-prone</td><td>Lightweight, non-comedogenic products</td></tr>
+          <tr><td>Dry</td><td>Tight feeling, flaky patches, dull</td><td>Rich moisturiser, gentle cleansing</td></tr>
+          <tr><td>Combination</td><td>Oily T-zone, dry cheeks</td><td>Zone-specific treatment</td></tr>
+          <tr><td>Sensitive</td><td>Reacts easily, redness, stinging</td><td>Fragrance-free, minimal actives</td></tr>
+        </table>
+        <div class="tip"><strong>Quick test:</strong> Wash your face, wait one hour without applying anything, then check. Shiny overall = oily. Tight/flaky = dry. Mix of both = combination.</div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 2.2 — THE CORE ROUTINE (AM & PM)</h3>
+        <p>The "Core Four" — all you actually need to start:</p>
+        <ol>
+          <li><strong>Cleanser</strong> — removes dirt, oil, pollutants. Use twice daily. Gel for oily skin, cream for dry.</li>
+          <li><strong>Moisturiser</strong> — hydrates and strengthens the skin barrier. Non-negotiable, even oily skin types.</li>
+          <li><strong>SPF (AM only)</strong> — SPF 30–50 every morning. UV damage is the number one cause of premature ageing. This single step matters more than any other product.</li>
+          <li><strong>Active treatment (PM only)</strong> — retinol, niacinamide, or vitamin C depending on your goal (see Lesson 2.3).</li>
+        </ol>
+        <div class="callout">
+          "The best skincare routine is one you actually do every day. Simple and consistent beats complex and irregular."
+        </div>
+        <p><strong>Budget-friendly picks (UK):</strong> CeraVe Hydrating Cleanser (£10), CeraVe Moisturising Cream (£12), La Roche-Posay Anthelios SPF50 (£18), The Ordinary Retinol 0.2% (£5).</p>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 2.3 — ACTIVES: THE REAL GAME CHANGERS</h3>
+        <table>
+          <tr><th>Active</th><th>What It Does</th><th>Best For</th><th>How to Use</th></tr>
+          <tr><td>Retinol/Retinoids</td><td>Increases cell turnover, boosts collagen, reduces wrinkles</td><td>Anti-ageing, texture, acne</td><td>PM only, start 2x/week, build up</td></tr>
+          <tr><td>Niacinamide</td><td>Reduces pores, controls oil, evens tone</td><td>Oily skin, hyperpigmentation</td><td>AM or PM, gentle enough daily</td></tr>
+          <tr><td>Vitamin C</td><td>Brightens, antioxidant protection, fades dark spots</td><td>Dull skin, sun damage</td><td>AM (pairs with SPF well)</td></tr>
+          <tr><td>AHA (glycolic/lactic)</td><td>Exfoliates surface skin, brightens</td><td>Texture, dullness</td><td>PM, 2–3x/week max</td></tr>
+          <tr><td>BHA (salicylic acid)</td><td>Unclogs pores, reduces blackheads</td><td>Oily/acne-prone skin</td><td>PM, 2–3x/week max</td></tr>
+          <tr><td>Hyaluronic acid</td><td>Hydrates, plumps skin</td><td>All skin types</td><td>AM + PM, apply to damp skin</td></tr>
+        </table>
+        <div class="tip"><strong>Don't combine:</strong> retinol + AHA/BHA in the same routine (too irritating). Vitamin C + niacinamide is fine. Keep it simple when starting.</div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 2.4 — FIXING ACNE, HYPERPIGMENTATION & SCARRING</h3>
+        <p><strong>For active acne:</strong> Start with a BHA cleanser (salicylic acid 2%) and niacinamide serum. Add benzoyl peroxide (2.5% — less irritating than 5%) for stubborn spots. Avoid picking — it always makes scarring worse.</p>
+        <p><strong>For hyperpigmentation (dark spots):</strong> Vitamin C serum (morning) + SPF is your baseline. Add tranexamic acid or alpha-arbutin for targeted treatment. Results take 6–12 weeks of consistency.</p>
+        <p><strong>For acne scarring:</strong></p>
+        <ul>
+          <li>Textured/indented scars: Retinol long-term; consider professional microneedling for significant scarring.</li>
+          <li>Flat dark marks (post-inflammatory hyperpigmentation): Treat as hyperpigmentation above.</li>
+          <li>Red/pink marks: These typically fade naturally over 3–6 months. Niacinamide can accelerate this.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== MODULE 3 =================== -->
+<div class="section">
+  <div class="section-label">Module 03</div>
+  <div class="section-title">BODY & PHYSIQUE</div>
+
+  <div class="module">
+    <div class="module-header">
+      <div class="module-num">03</div>
+      <div class="module-meta">
+        <div class="module-title">Body & Physique</div>
+        <div class="module-tagline">Train for aesthetics, not just performance</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="module-intro">
+        Your physique is the foundation everything else sits on. The goal here isn't to be a bodybuilder — it's to achieve proportions that look naturally athletic and powerful with clothes on. This module gives you the framework to get there efficiently.
+      </div>
+
+      <div class="gold-line"></div>
+
+      <div class="content-block">
+        <h3>LESSON 3.1 — THE AESTHETICS-FIRST TRAINING FRAMEWORK</h3>
+        <p>Aesthetic training prioritises certain muscle groups over others. The most impactful groups for visual impact:</p>
+        <table>
+          <tr><th>Muscle Group</th><th>Aesthetic Purpose</th><th>Priority</th></tr>
+          <tr><td>Shoulders (lateral delts)</td><td>Creates width, V-taper illusion</td><td>Highest</td></tr>
+          <tr><td>Upper chest</td><td>Fills shirts, projects confidence</td><td>Highest</td></tr>
+          <tr><td>Lats</td><td>Creates back width, V-taper</td><td>High</td></tr>
+          <tr><td>Neck</td><td>Hugely underrated — frames the face</td><td>High</td></tr>
+          <tr><td>Arms (biceps/triceps)</td><td>Look good in short sleeves</td><td>Medium</td></tr>
+          <tr><td>Glutes & legs</td><td>Overall proportion, clothes fit</td><td>Medium</td></tr>
+          <tr><td>Abs</td><td>Visible at low body fat (~12% for men)</td><td>Body fat dependent</td></tr>
+        </table>
+        <p>Train 4 days per week with an upper/lower split. Target each muscle group 2x per week with 12–20 working sets total per muscle group weekly.</p>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 3.2 — OPTIMAL BODY COMPOSITION</h3>
+        <p>For most men, the aesthetic sweet spot is 10–15% body fat with meaningful muscle mass. At this range:</p>
+        <ul>
+          <li>Facial features become more defined (most visible at 12% and below)</li>
+          <li>Jawline and cheekbone definition emerge</li>
+          <li>Clothes fit dramatically better</li>
+          <li>Testosterone levels tend to be optimal</li>
+        </ul>
+        <div class="callout">
+          "The most important looksmaxxing transformation most people can make is losing body fat. Everything else — skincare, grooming, style — matters more when your face is lean."
+        </div>
+        <p><strong>Fat loss basics:</strong> Create a 300–500 calorie daily deficit through a combination of diet and training. Track protein intake (aim for 0.8–1g per lb of bodyweight). Prioritise sleep (see Module 5). Fat loss is primarily a dietary challenge; training preserves muscle and improves body shape.</p>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 3.3 — NUTRITION FOR AESTHETICS</h3>
+        <p>Keep it simple. The science consistently supports:</p>
+        <ul>
+          <li><strong>Protein first:</strong> 150–200g per day for most people. Keeps you full, preserves muscle, supports skin health.</li>
+          <li><strong>Whole foods base:</strong> 80% of your diet from whole, minimally processed foods. Highly processed diets worsen skin quality and energy.</li>
+          <li><strong>Hydration:</strong> 2.5–3.5 litres of water daily. Dehydration is immediately visible in skin texture, eye puffiness, and energy.</li>
+          <li><strong>Limit alcohol:</strong> Alcohol disrupts sleep, increases cortisol, causes water retention (particularly visible in the face), and impairs recovery. Even 3–4 drinks a week has measurable cosmetic effects.</li>
+          <li><strong>Omega-3s:</strong> From oily fish or supplementation. Directly improves skin quality, reduces inflammation.</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 3.4 — POSTURE & MEWING</h3>
+        <p><strong>Posture</strong> may be the most overlooked element of attractiveness. Good posture:</p>
+        <ul>
+          <li>Makes you appear taller and more confident</li>
+          <li>Projects status and self-assurance</li>
+          <li>Reduces neck and jaw tension</li>
+          <li>Improves how clothes sit on your body</li>
+        </ul>
+        <p>Daily fixes: dead hangs (30–60 seconds, twice daily), face-pulls (3 sets, 3x per week), strengthen your glutes and core, consciously check your posture when sitting at screens.</p>
+        <p><strong>Mewing:</strong> The practice of tongue-posture correction — resting your tongue against the roof of your mouth, lips together, teeth slightly apart. The evidence for dramatic facial restructuring in adults is limited, but the posture improvements and jaw relaxation benefits are real. Practise it habitually rather than obsessing over results.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== MODULE 4 =================== -->
+<div class="section">
+  <div class="section-label">Module 04</div>
+  <div class="section-title">HAIR, GROOMING & STYLE</div>
+
+  <div class="module">
+    <div class="module-header">
+      <div class="module-num">04</div>
+      <div class="module-meta">
+        <div class="module-title">Hair, Grooming & Style</div>
+        <div class="module-tagline">Immediate impact — the fastest return on any investment in your appearance</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="module-intro">
+        A good haircut, well-maintained beard, and clothes that fit properly can transform your appearance within 24 hours. These are the fastest wins available to you — and they compound with everything else in this course.
+      </div>
+
+      <div class="gold-line"></div>
+
+      <div class="content-block">
+        <h3>LESSON 4.1 — FINDING YOUR HAIRCUT</h3>
+        <p>The right haircut for your face shape:</p>
+        <table>
+          <tr><th>Face Shape</th><th>Signs</th><th>Recommended Styles</th></tr>
+          <tr><td>Oval</td><td>Balanced proportions, slightly wider at cheekbones</td><td>Almost anything works. Textured crop, French crop, slick-back</td></tr>
+          <tr><td>Round</td><td>Similar width and length, soft jaw</td><td>Add height on top, keep sides shorter. Quiff, pompadour, side part</td></tr>
+          <tr><td>Square</td><td>Strong jaw, angular features</td><td>Textured styles, mid fades. Avoid very short all-over cuts that expose squareness</td></tr>
+          <tr><td>Oblong/Long</td><td>Long, narrow face</td><td>Volume on sides, avoid height. French crop, curtains, low fade</td></tr>
+          <tr><td>Heart</td><td>Wide forehead, narrow chin</td><td>Volume at jaw level, medium length. Side-swept, textured</td></tr>
+        </table>
+        <div class="tip"><strong>Communication tip:</strong> Show your barber 2–3 reference photos of styles you like. Say "I want something like this, adapted for my face shape." A good barber will guide you. Go to an actual barber shop, not a unisex salon.</div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 4.2 — BEARD GROOMING</h3>
+        <p>Whether to grow a beard depends on your face. Beards work best when they add definition to an undefined jaw or balance a weak chin. If you already have a strong jawline, stubble (3–7 days) often reads better than a full beard.</p>
+        <p><strong>Growing phase (weeks 1–4):</strong> Resist shaping. Let it grow in fully before you make decisions. Many people give up during the "patchy" phase at 2–3 weeks — push through.</p>
+        <p><strong>Maintenance:</strong></p>
+        <ul>
+          <li>Define the cheek line (remove stray hairs above your natural line)</li>
+          <li>Define the neckline (two finger-widths above your Adam's apple)</li>
+          <li>Use beard oil or balm daily for softness and appearance</li>
+          <li>Shape with scissors and a comb for longer beards</li>
+        </ul>
+        <div class="tip"><strong>The most common mistake:</strong> Setting the neckline too high. The neckline should follow the natural curve of your jaw, not your jawline itself — it's lower than most people think.</div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 4.3 — FRAGRANCE: YOUR INVISIBLE WEAPON</h3>
+        <p>Scent creates powerful, immediate impressions. Build a small collection of 2–3 fragrances for different occasions.</p>
+        <table>
+          <tr><th>Category</th><th>Occasions</th><th>Examples</th></tr>
+          <tr><td>Fresh/citrus</td><td>Daytime, casual, summer</td><td>Acqua di Gio, Bleu de Chanel EDT</td></tr>
+          <tr><td>Woody/spicy</td><td>Evening, cooler weather, dates</td><td>Dior Sauvage, YSL Y EDP</td></tr>
+          <tr><td>Warm/oriental</td><td>Winter, intimate occasions</td><td>Tom Ford Noir, JPG Ultramale</td></tr>
+        </table>
+        <p><strong>Application:</strong> Apply to pulse points — wrists, neck, chest. Don't rub. 2–4 sprays maximum. The goal is a pleasant presence, not a cloud you walk through. Stronger concentration = longer lasting: EDP > EDT > EDC.</p>
+        <div class="tip"><strong>Budget option:</strong> Check Dossier or Armaf for quality dupes at a fraction of designer prices. Nobody knows what your fragrance costs by smelling it.</div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 4.4 — FASHION BY BODY TYPE & BUDGET</h3>
+        <p><strong>The three rules that matter more than anything:</strong></p>
+        <ol>
+          <li><strong>Fit is everything.</strong> A £30 shirt that fits perfectly beats a £300 shirt that doesn't. Get things tailored if needed — a tailor is a game-changer.</li>
+          <li><strong>Colour palette matters.</strong> Build around neutrals (navy, white, grey, black, olive, beige). Add one or two accent colours you personally suit. Avoid clashing patterns when you're starting out.</li>
+          <li><strong>Quality over quantity.</strong> 10 versatile, well-fitting pieces beat a wardrobe of 40 items that don't work together.</li>
+        </ol>
+        <p><strong>Core wardrobe essentials (UK sources):</strong></p>
+        <ul>
+          <li>2–3 well-fitting white/navy t-shirts (UNIQLO, M&S)</li>
+          <li>2 pairs dark slim/straight jeans (ASOS, Levi's 511)</li>
+          <li>1 smart chino (COS, UNIQLO)</li>
+          <li>1 versatile navy or grey jacket (Zara, & Other Stories sale)</li>
+          <li>Clean, simple trainers — white leather works with almost everything (Nike AF1, Adidas Stan Smith)</li>
+          <li>1 quality watch (any clean, simple face — doesn't need to be expensive)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== MODULE 5 =================== -->
+<div class="section">
+  <div class="section-label">Module 05</div>
+  <div class="section-title">LIFESTYLE & HEALTH OPTIMISATION</div>
+
+  <div class="module">
+    <div class="module-header">
+      <div class="module-num">05</div>
+      <div class="module-meta">
+        <div class="module-title">Lifestyle & Health Optimisation</div>
+        <div class="module-tagline">Your biology is a looksmaxxing tool</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="module-intro">
+        Most people focus only on the external — products, clothes, training. But your hormones, sleep quality, stress levels, and health markers affect your appearance more directly than almost anything else. This module covers the biological side of looksmaxxing.
+      </div>
+
+      <div class="gold-line"></div>
+
+      <div class="content-block">
+        <h3>LESSON 5.1 — SLEEP AS A LOOKSMAXXING TOOL</h3>
+        <p>Sleep is when your body repairs skin, regulates hormones, and reduces inflammation. Poor sleep is visible on your face within 24 hours — puffiness, dark circles, dull skin, and reduced jaw definition from water retention.</p>
+        <p><strong>Optimise your sleep:</strong></p>
+        <ul>
+          <li>Target 7.5–9 hours of quality sleep (track with any wearable or free app)</li>
+          <li>Consistent wake time — even on weekends. This is the most powerful circadian lever.</li>
+          <li>Room temperature 16–18°C for optimal sleep quality</li>
+          <li>No screens 60 minutes before bed, or use blue light glasses</li>
+          <li>Sleep on a silk pillowcase — reduces friction on skin and hair</li>
+          <li>Slightly elevate your head — reduces morning puffiness and fluid retention in the face</li>
+        </ul>
+        <div class="callout">
+          "One week of 6-hour sleep nights measurably reduces facial attractiveness ratings. One week of returning to 8 hours reverses it."
+        </div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 5.2 — SUPPLEMENTS THAT ACTUALLY WORK</h3>
+        <p>Focus on supplements with actual evidence. Skip the marketing noise.</p>
+        <table>
+          <tr><th>Supplement</th><th>Evidence Level</th><th>Benefit</th><th>Dose</th></tr>
+          <tr><td>Vitamin D3</td><td>Strong</td><td>Hormone regulation, immune function, mood</td><td>2,000–4,000 IU/day</td></tr>
+          <tr><td>Omega-3 (EPA/DHA)</td><td>Strong</td><td>Skin quality, inflammation, brain health</td><td>1–3g EPA/DHA daily</td></tr>
+          <tr><td>Creatine</td><td>Very strong</td><td>Muscle performance and retention, cognitive function</td><td>5g/day</td></tr>
+          <tr><td>Zinc</td><td>Moderate</td><td>Testosterone, skin healing, immune function</td><td>15–30mg/day with food</td></tr>
+          <tr><td>Magnesium glycinate</td><td>Moderate</td><td>Sleep quality, muscle recovery, stress</td><td>300–400mg, before bed</td></tr>
+          <tr><td>Collagen peptides</td><td>Moderate</td><td>Skin elasticity, joint health</td><td>10g/day</td></tr>
+        </table>
+        <div class="tip"><strong>Before adding supplements:</strong> Get a blood panel done (GP or private, ~£80). This tells you what you're actually deficient in. Supplementing things you don't need is wasted money.</div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 5.3 — SUN EXPOSURE, TANNING & SKIN HEALTH</h3>
+        <p>A light, natural tan improves the appearance of most skin tones. But unprotected UV exposure is the single biggest driver of premature skin ageing — wrinkles, spots, and sagging.</p>
+        <p><strong>The framework:</strong></p>
+        <ul>
+          <li>Daily SPF 30–50 (non-negotiable — see Module 2)</li>
+          <li>15–20 minutes of unprotected sun on arms/legs for vitamin D synthesis (avoid face)</li>
+          <li>For a tan: use SPF 30 and simply spend time outdoors. Build gradually.</li>
+          <li>Self-tanner or gradual tanning moisturiser: great for a subtle glow without UV damage</li>
+          <li>Never use sunbeds. UV damage from sunbeds is aggressive and cumulative.</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 5.4 — STRESS, CORTISOL & YOUR FACE</h3>
+        <p>Chronic stress elevates cortisol, which directly:</p>
+        <ul>
+          <li>Breaks down collagen (skin becomes thinner and less elastic)</li>
+          <li>Triggers acne and inflammation</li>
+          <li>Disrupts sleep and testosterone production</li>
+          <li>Causes fat gain, particularly around the face and abdomen</li>
+        </ul>
+        <p>Stress management isn't soft advice — it's biochemistry. Build daily stress management into your routine: 10–20 minutes of low-intensity exercise (walks count), breathwork (4-7-8 breathing or box breathing), reducing caffeine after noon, and limiting news/social media consumption which creates chronic low-level anxiety.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== MODULE 6 =================== -->
+<div class="section">
+  <div class="section-label">Module 06</div>
+  <div class="section-title">PRESENCE, CONFIDENCE & SOCIAL SKILLS</div>
+
+  <div class="module">
+    <div class="module-header">
+      <div class="module-num">06</div>
+      <div class="module-meta">
+        <div class="module-title">Presence, Confidence & Social Skills</div>
+        <div class="module-tagline">How you carry yourself changes how the world sees you</div>
+      </div>
+    </div>
+    <div class="module-body">
+      <div class="module-intro">
+        Physical appearance matters — but so does how you occupy space, how you communicate, and the energy you bring to interactions. The most attractive version of you is a combination of how you look and how you carry yourself. This module ties everything together.
+      </div>
+
+      <div class="gold-line"></div>
+
+      <div class="content-block">
+        <h3>LESSON 6.1 — BODY LANGUAGE THAT COMMUNICATES STATUS</h3>
+        <p>High-status body language signals:</p>
+        <ul>
+          <li><strong>Slow movement:</strong> Urgency signals anxiety. Deliberate, unhurried movement reads as confidence.</li>
+          <li><strong>Space:</strong> Take up appropriate space — don't compress yourself. Wide stance, relaxed arms at sides.</li>
+          <li><strong>Head position:</strong> Chin slightly up, not tucked. Looking up vs down changes face perception significantly.</li>
+          <li><strong>Eye contact:</strong> Hold eye contact 60–70% of the time when listening, a little less when speaking. Look away to the side, not down.</li>
+          <li><strong>Stillness:</strong> Fidgeting, touching your face, and nervous movement are signals of anxiety. Practise stillness.</li>
+        </ul>
+        <div class="tip"><strong>Daily practice:</strong> Record yourself having a conversation on your phone. Watch it back without sound. The patterns you see are what others see. Most people are shocked by what they discover.</div>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 6.2 — VOCAL TONE & COMMUNICATION</h3>
+        <p>Your voice is as important as your face. A strong, clear, resonant voice dramatically changes how you're perceived.</p>
+        <p><strong>Common issues and fixes:</strong></p>
+        <ul>
+          <li><strong>Upspeak (rising inflection at end of sentences):</strong> Sounds uncertain. Consciously end declarative statements with a flat or falling tone.</li>
+          <li><strong>Speaking too fast:</strong> Slowing your speech rate 20% immediately sounds more confident.</li>
+          <li><strong>Vocal fry:</strong> That creaky sound on end of phrases. Improve breath support and hydration.</li>
+          <li><strong>Volume:</strong> Many people speak too quietly. Project from your diaphragm, not your throat.</li>
+        </ul>
+        <p>Daily exercise: Read aloud for 10 minutes per day. Vary your pace, emphasis, and tone intentionally. This builds awareness and control.</p>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 6.3 — LOOKING GREAT IN PHOTOS</h3>
+        <p>In the age of social media, knowing how to photograph well is a skill worth mastering.</p>
+        <ul>
+          <li><strong>Lighting:</strong> Soft, even natural light (facing a window or outdoors in shade) beats harsh direct sunlight. Golden hour (1 hour after sunrise or before sunset) is flattering to almost everyone.</li>
+          <li><strong>Angle:</strong> Camera slightly above eye level, looking up slightly reduces double chin and broadens jaw. Never below eye level for portrait shots.</li>
+          <li><strong>Expression:</strong> A relaxed, slight smirk (not a forced grin) reads best. The "squinch" — slightly squinting while smiling — is research-backed to read as confident and attractive.</li>
+          <li><strong>Posture:</strong> Lean slightly forward, not back. Push your chin slightly forward and down (yes, this feels odd but looks natural in photos). Brings jaw forward and reduces perceived double chin.</li>
+          <li><strong>Background:</strong> Clean, uncluttered backgrounds. Or environmental context that tells a story about your life. A blurred background draws focus to your face.</li>
+        </ul>
+      </div>
+
+      <div class="content-block">
+        <h3>LESSON 6.4 — BUILDING YOUR PERSONAL BRAND ONLINE</h3>
+        <p>Your online presence is part of your appearance in the modern world. A consistent, well-presented profile signals status, confidence, and social proof.</p>
+        <p><strong>Core principles:</strong></p>
+        <ul>
+          <li>Profile photo: High quality, well-lit, smiling (slight). This is your first impression — invest in it.</li>
+          <li>Consistency: Same username across platforms. Same profile photo or visual style.</li>
+          <li>Show, don't tell: Don't say you're interesting — post photos that demonstrate your lifestyle, hobbies, and values.</li>
+          <li>Less is more: A clean, curated feed with 10 great posts beats 100 average ones. Remove anything that doesn't represent the person you're building toward.</li>
+        </ul>
+        <div class="callout">
+          "Your social media is a portfolio of your life. Curate it like one."
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== BONUSES =================== -->
+<div class="section">
+  <div class="section-label">Included Bonuses</div>
+  <div class="section-title">YOUR COMPLETE TOOLKIT</div>
+
+  <div class="bonus-grid">
+    <div class="bonus-card">
+      <div class="bonus-icon">📋</div>
+      <div class="bonus-title">12-WEEK ACTION CHECKLIST</div>
+      <div class="bonus-desc">Week-by-week PDF checklist covering every action from all six modules. Tick off daily, weekly, and monthly tasks to stay on track and build habits systematically.</div>
+    </div>
+    <div class="bonus-card">
+      <div class="bonus-icon">🧴</div>
+      <div class="bonus-title">SKINCARE PRODUCT GUIDE</div>
+      <div class="bonus-desc">Comparison of 30+ popular skincare products across 5 price tiers, organised by skin type and concern. Takes the guesswork out of choosing products.</div>
+    </div>
+    <div class="bonus-card">
+      <div class="bonus-icon">🏋️</div>
+      <div class="bonus-title">AESTHETICS TRAINING PROGRAMME</div>
+      <div class="bonus-desc">A complete 4-day upper/lower split programme focused on the muscle groups that matter most for visual aesthetics. 12 weeks of progressive programming included.</div>
+    </div>
+    <div class="bonus-card">
+      <div class="bonus-icon">👥</div>
+      <div class="bonus-title">PRIVATE COMMUNITY ACCESS</div>
+      <div class="bonus-desc">Join the Apex Self community for accountability, feedback on your progress, Q&A, and connection with others on the same journey.</div>
+    </div>
+  </div>
+
+  <!-- 12-WEEK CHECKLIST -->
+  <div style="margin-top: 48px;">
+    <div class="section-label" style="margin-bottom: 8px;">Bonus — 12 Week Checklist</div>
+    <div class="section-title" style="font-size: 36px; margin-bottom: 28px;">12-WEEK ACTION PLAN</div>
+
+    <div class="checklist-week">
+      <div class="checklist-week-header">WEEKS 1–2 — FOUNDATION</div>
+      <div class="checklist-items">
+        <div class="checklist-item"><div class="check-box"></div>Complete Module 1 self-assessment & take baseline photos</div>
+        <div class="checklist-item"><div class="check-box"></div>Identify your skin type and order core skincare products</div>
+        <div class="checklist-item"><div class="check-box"></div>Start AM/PM skincare routine (cleanser, moisturiser, SPF)</div>
+        <div class="checklist-item"><div class="check-box"></div>Book a barber appointment; bring reference photos</div>
+        <div class="checklist-item"><div class="check-box"></div>Begin tracking food and water intake</div>
+        <div class="checklist-item"><div class="check-box"></div>Start training programme (Bonus PDF)</div>
+        <div class="checklist-item"><div class="check-box"></div>Set sleep schedule — same wake time daily</div>
+        <div class="checklist-item"><div class="check-box"></div>Do a wardrobe audit — keep only well-fitting items</div>
+      </div>
+    </div>
+
+    <div class="checklist-week">
+      <div class="checklist-week-header">WEEKS 3–6 — BUILD HABITS</div>
+      <div class="checklist-items">
+        <div class="checklist-item"><div class="check-box"></div>Introduce your first skincare active (niacinamide or vitamin C)</div>
+        <div class="checklist-item"><div class="check-box"></div>Complete 3 full weeks of training without missing sessions</div>
+        <div class="checklist-item"><div class="check-box"></div>Hit your protein target daily (track with MyFitnessPal)</div>
+        <div class="checklist-item"><div class="check-box"></div>Source 1 signature fragrance</div>
+        <div class="checklist-item"><div class="check-box"></div>Practice posture corrections daily (dead hangs, face-pulls)</div>
+        <div class="checklist-item"><div class="check-box"></div>Read aloud 10 minutes daily for vocal improvement</div>
+        <div class="checklist-item"><div class="check-box"></div>Identify 3–5 style reference points and plan wardrobe additions</div>
+        <div class="checklist-item"><div class="check-box"></div>Start daily walks (20+ minutes) for stress regulation</div>
+      </div>
+    </div>
+
+    <div class="checklist-week">
+      <div class="checklist-week-header">WEEKS 7–10 — OPTIMISE</div>
+      <div class="checklist-items">
+        <div class="checklist-item"><div class="check-box"></div>Introduce retinol (2x per week, PM, after moisturiser)</div>
+        <div class="checklist-item"><div class="check-box"></div>Order and start supplement protocol (D3, Omega-3, Magnesium)</div>
+        <div class="checklist-item"><div class="check-box"></div>Optimise sleep environment (temperature, darkness, pillow type)</div>
+        <div class="checklist-item"><div class="check-box"></div>Upgrade 2–3 key wardrobe pieces</div>
+        <div class="checklist-item"><div class="check-box"></div>Record a video of yourself in conversation — review and identify habits</div>
+        <div class="checklist-item"><div class="check-box"></div>Update social media profile photo with a proper, well-lit shot</div>
+        <div class="checklist-item"><div class="check-box"></div>Reduce alcohol to max 2 occasions per week</div>
+      </div>
+    </div>
+
+    <div class="checklist-week">
+      <div class="checklist-week-header">WEEKS 11–12 — CONSOLIDATE & REVIEW</div>
+      <div class="checklist-items">
+        <div class="checklist-item"><div class="check-box"></div>Take comparison photos — same angles as baseline</div>
+        <div class="checklist-item"><div class="check-box"></div>Review skincare routine — what's working, what to add or remove</div>
+        <div class="checklist-item"><div class="check-box"></div>Plan next 12-week training phase</div>
+        <div class="checklist-item"><div class="check-box"></div>Audit your sleep data — are you hitting 7.5 hours consistently?</div>
+        <div class="checklist-item"><div class="check-box"></div>Social media audit — curate your profile, remove poor photos</div>
+        <div class="checklist-item"><div class="check-box"></div>Set 3 specific goals for the next 90 days</div>
+        <div class="checklist-item"><div class="check-box"></div>Share your before/after in the community</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =================== FOOTER =================== -->
+<div class="section" style="border-bottom: none;">
+  <div class="section-label">End of Course</div>
+  <div class="section-title" style="margin-bottom: 24px;">YOU'VE GOT EVERYTHING YOU NEED</div>
+  <div class="content-block">
+    <p>This course is your complete roadmap. The difference between people who transform their appearance and those who don't isn't access to information — it's execution. Follow the 12-week plan. Build the habits. Trust the process.</p>
+    <p>Share your progress in the community. The accountability alone makes a significant difference.</p>
+    <div class="callout">"One year from now, you'll wish you had started today."</div>
+    <p style="color: var(--gold); font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 3px; margin-top: 24px;">— APEX SELF</p>
+  </div>
+</div>
+
+</body>
+</html>
